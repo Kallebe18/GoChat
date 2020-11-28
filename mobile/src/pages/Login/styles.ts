@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 
-// interface WelcomeIconProps {
-//   source: string;
-// }
+interface LoginButtonContainerProps {
+  loginType: string;
+}
 
 export const LoginScreen = styled.View`
   flex: 1;
@@ -24,7 +24,7 @@ export const WelcomeIcon = styled.Image`
 `;
 
 export const WelcomeTitle = styled.Text`
-  font-size: 20px;
+  font-size: 28px;
   font-weight: bold;
   margin-top: 10px;
   color: #fff;
@@ -43,17 +43,19 @@ export const LoginContainer = styled.View`
   margin-bottom: 20px;
 `;
 
-export const LoginButtonGoogle = styled.TouchableOpacity`
+export const LoginButtonContainer = styled.TouchableOpacity<LoginButtonContainerProps>`
   height: 45px;
   width: 250px;
-  background-color: #da3d3d;
-  border-radius: 10;
+  margin-bottom: 10px;
+  background-color: ${(props) =>
+    props.loginType === 'google' ? '#da3d3d' : '#4D67C5'};
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-export const LoginButtonTextGoogle = styled.Text`
+export const LoginButtonText = styled.Text`
   font-size: 16px;
   font-weight: 700;
   color: #fff;
