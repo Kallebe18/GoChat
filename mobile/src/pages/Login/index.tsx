@@ -17,11 +17,11 @@ const welcomeLogo = require('../../assets/logo_icon.png');
 const Login: React.FC = () => {
   const navigation = useNavigation();
   const handleGoogleLogin = () => {
-    navigation.navigate('TabRoutes');
+    navigation.navigate('MainRoutes');
   };
 
   const handleFacebookLogin = () => {
-    navigation.navigate('TabRoutes');
+    navigation.navigate('MainRoutes');
   };
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Fi from 'react-native-vector-icons/Feather';
 
 import Contacts from '../pages/Contacts';
 import Search from '../pages/Search';
@@ -13,15 +13,15 @@ const TabRoutes = () => {
       tabBarIcon: ({ focused, color, size }) => {
         let iconName = 'list';
         let iconColor = '#fff';
-        if (route.name === 'Buscar') iconName = 'search'
-        if (!focused) iconColor = '#ccc'
+        if (route.name === 'Buscar') iconName = 'user-plus'
+        if (!focused) iconColor = '#999'
         // You can return any component that you like here!
-        return <Ionicons name={iconName} size={30} color={iconColor} />;
+        return <Fi name={iconName} size={25} color={iconColor} />;
       },
       })}
       tabBarOptions={{
         activeTintColor: '#fff',
-        inactiveTintColor: '#aaa',
+        inactiveTintColor: '#999',
         style: {
           backgroundColor: '#333',
           borderTopColor: '#444',
