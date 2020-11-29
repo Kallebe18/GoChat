@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 
 export const SearchScreen = styled.View`
-  height: 10px;
+  flex: 1;
+  background-color: #33263e;
 `;
