@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import DrawerRoutes from './drawerNavRoutes';
+import DrawerRoutes from './drawerNav/drawerNavRoutes';
 
 import Login from '../pages/Login';
 

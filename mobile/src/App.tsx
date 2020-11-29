@@ -3,13 +3,11 @@ import { StatusBar, SafeAreaView } from 'react-native';
 
 import Routes from './routes';
 
-const safeAreaViewStyle = { flex: 1 };
-
 const App: React.FC = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={safeAreaViewStyle}>
+      <StatusBar barStyle="light-content" backgroundColor="#000" />
+      <SafeAreaView style={{ flex: 1 }}>
         <Routes />
       </SafeAreaView>
     </>

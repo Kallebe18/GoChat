@@ -33,6 +33,7 @@ const Login: React.FC = () => {
           Converse com pessoas de forma anônima
         </WelcomeDescription>
       </WelcomeContainer>
+
       <LoginContainer>
         <LoginButtonContainer loginType="google" onPress={handleGoogleLogin}>
           <LoginButtonText>LOGIN COM GOOGLE</LoginButtonText>

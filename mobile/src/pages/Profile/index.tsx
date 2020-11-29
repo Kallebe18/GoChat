@@ -6,4 +6,4 @@ const Profile: React.FC = () => {
   return <ProfileScreen />;
 };
 
-export default Contacts;
+export default Profile;
