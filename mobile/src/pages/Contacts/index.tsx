@@ -1,4 +1,6 @@
 import React from 'react';
+import { GestureResponderEvent } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Fi from 'react-native-vector-icons/Feather';
 
 import {
@@ -50,6 +52,12 @@ let Users: UserInfo[] = [
 ];
 
 const Contacts: React.FC = () => {
+  const navigation = useNavigation();
+
+  const handleContactUserClick = (event: GestureResponderEvent) => {
+    navigation.navigate('Chat')
+  }
+
   return (
     <ContactsScreen>
       <FlatList
@@ -58,7 +66,9 @@ const Contacts: React.FC = () => {
         renderItem={
           ({ item }) => {
             return (
-              <ContactsUserContainer>
+              <ContactsUserContainer
+                onPress={handleContactUserClick}
+              >
                 <ContactImage source={{ uri: item.imageUri }}/>
 
                 <ContactInfoContainer>

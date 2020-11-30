@@ -18,8 +18,10 @@ import {
 
 import TabRoutes from '../mainTabRoutes';
 import styles from './styles';
+
 import Profile from '../../pages/Profile';
 import SearchContainer from '../../components/Search';
+import Chat from '../../pages/Chat';
 
 const DrawerNav = createDrawerNavigator();
 
@@ -98,6 +100,10 @@ const DrawerRoutes = () => {
       <DrawerNav.Screen
         name="Profile"
         component={Profile}
+      />
+      <DrawerNav.Screen
+        name="Chat"
+        component={Chat}
       />
     </DrawerNav.Navigator>
   )
