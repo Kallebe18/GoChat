@@ -6,7 +6,7 @@ import SearchCard from '../../components/SearchCard';
 const Search: React.FC = () => {
   return (
     <SearchScreen>
-      <SearchCard/>
+      <SearchCard />
     </SearchScreen>
   )
 };

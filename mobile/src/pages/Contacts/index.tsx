@@ -22,17 +22,32 @@ interface UserInfo {
   lastMessageState: number;
 }
 
-let Users: UserInfo[] = [];
-for (let i=0; i<30; i++) {
-  Users.push({
-    id: i,
+let Users: UserInfo[] = [
+  {
+    id: 1,
     name: "Fulano",
-    lastMessage: "blablabla",
+    lastMessage: "eae mano",
     lastEntry: new Date(),
     imageUri: "https://secure.gravatar.com/avatar/6971cc259ddbb183c9843369be63e3a2?s=100&d=identicon&r=g",
     lastMessageState: 1
-  });
-}
+  },
+  {
+    id: 2,
+    name: "Siclano",
+    lastMessage: "qual foi",
+    lastEntry: new Date(),
+    imageUri: "https://avatars1.githubusercontent.com/u/6936373?v=4",
+    lastMessageState: 1
+  },
+  {
+    id: 3,
+    name: "Fulano",
+    lastMessage: "fala tu",
+    lastEntry: new Date(),
+    imageUri: "https://avatars2.githubusercontent.com/u/35331195?v=4",
+    lastMessageState: 1
+  }
+];
 
 const Contacts: React.FC = () => {
   return (
