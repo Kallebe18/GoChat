@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
+import Fi from 'react-native-vector-icons/Feather';
 
-import { SearchScreen } from './styles';
+import {
+  SearchScreen,
+  ButtonsContainer,
+  ButtonContainer
+} from './styles';
 import SearchSwiper from '../../components/SearchSwiper';
 import api from '../../services/api';
 import { IUserInfo } from '../../interfaces/IUserInfo';
@@ -31,9 +36,17 @@ const Search: React.FC = () => {
       {
         users.length
           ?
-            <SearchScreen>
+            <>
               <SearchSwiper users={users}/>
-            </SearchScreen>
+              <ButtonsContainer>
+                <ButtonContainer>
+                  <Fi name="x" size={30} color="#fff"/>
+                </ButtonContainer>
+                <ButtonContainer>
+                  <Fi name="message-square" size={30} color="#fff"/>
+                </ButtonContainer>
+              </ButtonsContainer>
+            </>
           :
             <ActivityIndicator size="large" color="#8435a3"/>
       }

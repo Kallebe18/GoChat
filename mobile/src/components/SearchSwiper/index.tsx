@@ -24,7 +24,6 @@ const SearchSwiper: React.FC<SearchSwiperProps> =
       stackSize={3}
       verticalSwipe={false}
       renderCard={(user: IUserInfo, cardIndex) => {
-        console.log(users);
         return (
           <Card key={user.id}>
             <CardImage source={{uri: user.avatar_url}}/>
