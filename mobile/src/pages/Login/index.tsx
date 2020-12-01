@@ -12,6 +12,7 @@ import {
   LoginButtonText,
   LoginWarningText,
 } from './styles';
+
 const welcomeLogo = require('../../assets/logo_icon.png');
 
 const Login: React.FC = () => {
@@ -40,7 +41,8 @@ const Login: React.FC = () => {
         </LoginButtonContainer>
         <LoginButtonContainer
           loginType="facebook"
-          onPress={handleFacebookLogin}>
+          onPress={handleFacebookLogin}
+        >
           <LoginButtonText>LOGIN COM FACEBOOK</LoginButtonText>
         </LoginButtonContainer>
         <LoginWarningText>
