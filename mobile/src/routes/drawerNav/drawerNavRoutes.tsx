@@ -59,7 +59,10 @@ const handleDrawerContent: ((props:
         (routeName) => routeName !== 'DrawerMain'
       ),
       routes: props.state.routes.filter(
-        (route) => route.name !== 'DrawerMain' && route.name !== 'Profile'
+        (route) =>
+          route.name !== 'DrawerMain'
+          && route.name !== 'Profile'
+          && route.name !== 'Chat'
       ),
     }
   }
