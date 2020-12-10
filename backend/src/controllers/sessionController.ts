@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import * as yup from 'yup'
 
 import AppError from '../errors/AppError'
+import RegisterUserService from '../services/registerUserService'
 
 export default {
   async create(req: Request, res: Response) {
@@ -18,8 +19,18 @@ export default {
         throw new AppError(err.errors[0], 403)
       })
 
+    const registerUserService = new RegisterUserService()
+
+    const registeredUser = await registerUserService.execute({
+      email,
+      password
+    })
+
+    console.log(registeredUser)
+
     return res.json({
-      msg: 'ok'
+      message: 'user registered with success',
+      email
     })
   }
 }
