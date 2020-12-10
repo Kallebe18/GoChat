@@ -1,6 +1,8 @@
 import { getRepository } from 'typeorm'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
+import auth from '../config/auth'
 import User from '../database/entities/User'
 import AppError from '../errors/AppError'
 
@@ -18,7 +20,21 @@ export default class LoginUserService {
 
     if (user) {
       const passwordValid = await bcrypt.compare(password, user.password)
-      if (passwordValid) return user
+      if (passwordValid) {
+        const token = jwt.sign(
+          {
+            id: user.id
+          },
+          auth.jwt.secret,
+          {
+            expiresIn: auth.jwt.expiresIn
+          }
+        )
+        return {
+          ...user,
+          token
+        }
+      }
     }
 
     throw new AppError('Invalid email or password', 404)
