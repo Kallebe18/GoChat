@@ -4,6 +4,8 @@ import 'express-async-errors'
 import Routes from './routes'
 import AppError from './errors/AppError'
 
+import './database'
+
 const app = express()
 
 app.use(express.json())
