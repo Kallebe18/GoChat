@@ -4,16 +4,16 @@ import { getRepository } from 'typeorm'
 import User from '../database/entities/User'
 import AppError from '../errors/AppError'
 
-interface RegisterUserParams {
+interface RegisterUserDTO {
   email: string
   password: string
 }
 
 export default class RegisterUserService {
-  public async execute({ email, password }: RegisterUserParams) {
+  public async execute({ email, password }: RegisterUserDTO) {
     const userRepository = getRepository(User)
 
-    const userAlreadyExists = userRepository.findOne({
+    const userAlreadyExists = await userRepository.findOne({
       where: { email }
     })
 
@@ -29,6 +29,7 @@ export default class RegisterUserService {
 
     await userRepository.save(user)
 
+    delete user.password
     return user
   }
 }

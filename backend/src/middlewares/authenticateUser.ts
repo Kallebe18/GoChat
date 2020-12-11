@@ -6,7 +6,7 @@ import AppError from '../errors/AppError'
 
 async function authenticateUser(
   req: Request,
-  res: Response,
+  res_: Response,
   next: NextFunction
 ) {
   const authorizationHeader = req.headers.authorization
@@ -27,9 +27,7 @@ async function authenticateUser(
     throw new AppError('Token is not valid', 401)
   }
 
-  return res.json({
-    msg: 'ok'
-  })
+  return next()
 }
 
 export default authenticateUser

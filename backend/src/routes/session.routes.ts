@@ -1,15 +1,12 @@
 import { Router } from 'express'
 
 import sessionController from '../controllers/sessionController'
-import validateUserInfo from '../middlewares/validateUserInfo'
-import authenticateUser from '../middlewares/authenticateUser'
+import validateUserSessionInfo from '../middlewares/validateUserSessionInfo'
 
 const SessionRoutes = Router()
 
-SessionRoutes.post('/register', validateUserInfo, sessionController.create)
-SessionRoutes.post('/login', validateUserInfo, sessionController.index)
-SessionRoutes.get('/test_token', authenticateUser, (req, res, n) => {
-  return n()
-})
+SessionRoutes.use(validateUserSessionInfo)
+SessionRoutes.post('/register', sessionController.create)
+SessionRoutes.post('/login', sessionController.index)
 
 export default SessionRoutes

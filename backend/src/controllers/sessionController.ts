@@ -9,24 +9,24 @@ export default {
 
     const loginUserService = new LoginUserService()
 
-    const user = await loginUserService.execute({ email, password })
+    const session = await loginUserService.execute({ email, password })
 
     return res.json({
       message: 'successfully logged in',
-      email: user.email,
-      token: user.token
+      ...session
     })
   },
+
   async create(req: Request, res: Response) {
     const { email, password } = req.body
 
     const registerUserService = new RegisterUserService()
 
-    await registerUserService.execute({ email, password })
+    const user = await registerUserService.execute({ email, password })
 
     return res.json({
       message: 'user registered with success',
-      email
+      user
     })
   }
 }

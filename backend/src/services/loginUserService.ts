@@ -6,19 +6,19 @@ import auth from '../config/auth'
 import User from '../database/entities/User'
 import AppError from '../errors/AppError'
 
-interface LoginUserParams {
+interface UserLoginDTO {
   email: string
   password: string
 }
 
 export default class LoginUserService {
-  public async execute({ email, password }: LoginUserParams) {
+  public async execute({ email, password }: UserLoginDTO) {
     const userRepository = getRepository(User)
     const user = await userRepository.findOne({
       where: { email }
     })
 
-    if (user) {
+    if (user && user.password) {
       const passwordValid = await bcrypt.compare(password, user.password)
       if (passwordValid) {
         const token = jwt.sign(
@@ -30,8 +30,9 @@ export default class LoginUserService {
             expiresIn: auth.jwt.expiresIn
           }
         )
+        delete user.password
         return {
-          ...user,
+          user,
           token
         }
       }

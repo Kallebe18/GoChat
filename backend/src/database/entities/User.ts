@@ -18,7 +18,16 @@ export default class User {
   username: string
 
   @Column()
-  password: string
+  password?: string
+
+  @Column()
+  age: number
+
+  @Column()
+  gender: string
+
+  @Column()
+  bio: string
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date

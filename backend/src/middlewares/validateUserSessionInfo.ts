@@ -3,7 +3,7 @@ import * as yup from 'yup'
 
 import AppError from '../errors/AppError'
 
-async function validateUserInfo(
+async function validateUserSessionInfo(
   req: Request,
   res_: Response,
   next: NextFunction
@@ -20,4 +20,4 @@ async function validateUserInfo(
   return next()
 }
 
-export default validateUserInfo
+export default validateUserSessionInfo
