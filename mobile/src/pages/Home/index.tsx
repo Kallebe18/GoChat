@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useContext } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
-import { AxiosError, AxiosResponse } from 'axios';
 // import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import {
@@ -17,8 +16,7 @@ import {
 } from './styles';
 import HomeForm from '../../components/HomeForm';
 import SessionInput from '../../components/SessionInput';
-import api from '../../services/api';
-import UserContext from '../../contexts/UserContext';
+import { UserContext } from '../../contexts/UserContext';
 
 const welcomeLogo = require('../../assets/logo_icon.png');
 
@@ -27,36 +25,17 @@ const Home: React.FC = () => {
   const [isLogin, setIsLogin] = useState<Boolean>(true);
   const userContext = useContext(UserContext);
 
-  const handleSubmitLogin = useCallback(data => {
-    const { email, password } = data;
-
-    api
-      .post('/sessions/login', {
-        email,
-        password,
-      })
-      .then((response: AxiosResponse) => {
-        console.log(response.data);
-      })
-      .catch((error: AxiosError) => {
-        console.error(error.response?.data);
-      });
-  }, []);
+  const handleSubmitLogin = useCallback(
+    async data => {
+      const { email, password } = data;
+      await userContext.signIn({ email, password });
+      navigation.navigate('MainRoutes');
+    },
+    [userContext, navigation],
+  );
 
   const handleSubmitRegister = useCallback(async data => {
-    const { email, password } = data;
-
-    api
-      .post('/sessions/register', {
-        email,
-        password,
-      })
-      .then((response: AxiosResponse) => {
-        console.log(response.data);
-      })
-      .catch((error: AxiosError) => {
-        console.error(error.response?.data);
-      });
+    // const { email, password, passwordConfirmation } = data;
   }, []);
 
   const changeFormType = useCallback(() => {
